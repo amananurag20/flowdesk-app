@@ -2,6 +2,12 @@
 
 A modern customer success platform that gives customer success teams a 360° view of their customers. Built with Next.js 16, React 19, TypeScript, and Tailwind CSS.
 
+<img width="1907" height="875" alt="image" src="https://github.com/user-attachments/assets/13bb760e-891b-4553-a47c-d5f0ca965758" />
+
+<img width="1791" height="880" alt="image" src="https://github.com/user-attachments/assets/50c541cc-8c76-4dd5-8b66-428ac06e14d0" />
+
+
+
 ## 🎯 Overview
 
 FlowDesk helps Customer Success Managers (CSMs) quickly understand which customers are healthy and which are at risk, enabling them to prioritize their time effectively.
