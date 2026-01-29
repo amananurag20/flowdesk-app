@@ -5,23 +5,25 @@ import { Pagination } from '@/components/customer-health/Pagination';
 import { HealthSegment } from '@/lib/types/customer';
 
 interface PageProps {
-    searchParams: {
+    searchParams: Promise<{
         search?: string;
         segment?: HealthSegment;
         page?: string;
         sortBy?: 'name' | 'mrr' | 'lastActive' | 'healthScore';
         sortOrder?: 'asc' | 'desc';
-    };
+    }>;
 }
 
 export default async function CustomerHealthPage({ searchParams }: PageProps) {
+    const params = await searchParams;
+
     const filters = {
-        search: searchParams.search || '',
-        segment: searchParams.segment || ('' as HealthSegment | ''),
-        page: parseInt(searchParams.page || '1', 10),
+        search: params.search || '',
+        segment: params.segment || ('' as HealthSegment | ''),
+        page: parseInt(params.page || '1', 10),
         pageSize: 20,
-        sortBy: searchParams.sortBy || 'name',
-        sortOrder: searchParams.sortOrder || 'asc',
+        sortBy: params.sortBy || 'name',
+        sortOrder: params.sortOrder || 'asc',
     };
 
     const result = await fetchCustomers(filters);

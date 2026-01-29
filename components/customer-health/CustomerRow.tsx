@@ -2,7 +2,7 @@
 
 import { Customer } from '@/lib/types/customer';
 import { HealthBadge } from './HealthBadge';
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow, format } from 'date-fns';
 import clsx from 'clsx';
 
 interface CustomerRowProps {
@@ -14,6 +14,7 @@ interface CustomerRowProps {
 export function CustomerRow({ customer, onClick, isSelected }: CustomerRowProps) {
     const lastActiveDate = new Date(customer.lastActive);
     const lastActiveText = formatDistanceToNow(lastActiveDate, { addSuffix: true });
+    const formattedDate = format(lastActiveDate, 'dd/MM/yyyy');
 
     return (
         <tr
@@ -44,7 +45,7 @@ export function CustomerRow({ customer, onClick, isSelected }: CustomerRowProps)
             </td>
             <td className="px-6 py-4">
                 <div className="text-sm text-gray-900">
-                    {lastActiveDate.toLocaleDateString()}
+                    {formattedDate}
                 </div>
                 <div className="text-xs text-gray-500">{lastActiveText}</div>
             </td>

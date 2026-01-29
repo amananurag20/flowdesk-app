@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchCustomerHealth } from '@/lib/api/customers';
 import { Customer } from '@/lib/types/customer';
 import { HealthBadge } from './HealthBadge';
-import { formatDistanceToNow } from 'date-fns';
+import { formatDistanceToNow, format } from 'date-fns';
 import clsx from 'clsx';
 
 interface CustomerDetailsPanelProps {
@@ -72,7 +72,7 @@ export function CustomerDetailsPanel({ customer, onClose }: CustomerDetailsPanel
                         <div className="bg-gray-50 rounded-lg p-4">
                             <div className="text-sm text-gray-600 mb-1">Last Active</div>
                             <div className="text-sm font-semibold text-gray-900">
-                                {new Date(customer.lastActive).toLocaleDateString()}
+                                {format(new Date(customer.lastActive), 'dd/MM/yyyy')}
                             </div>
                             <div className="text-xs text-gray-500">
                                 {formatDistanceToNow(new Date(customer.lastActive), { addSuffix: true })}
@@ -147,7 +147,7 @@ export function CustomerDetailsPanel({ customer, onClose }: CustomerDetailsPanel
                                         >
                                             <div className="flex items-center justify-between mb-3">
                                                 <span className="text-sm font-semibold text-gray-900">
-                                                    {new Date(trend.date).toLocaleDateString()}
+                                                    {format(new Date(trend.date), 'dd/MM/yyyy')}
                                                 </span>
                                             </div>
                                             <div className="grid grid-cols-2 gap-4">
@@ -190,7 +190,7 @@ export function CustomerDetailsPanel({ customer, onClose }: CustomerDetailsPanel
                                             <p className="text-sm text-gray-900 mb-2">{note.content}</p>
                                             <div className="flex items-center justify-between text-xs text-gray-600">
                                                 <span className="font-medium">{note.author}</span>
-                                                <span>{new Date(note.createdAt).toLocaleDateString()}</span>
+                                                <span>{format(new Date(note.createdAt), 'dd/MM/yyyy')}</span>
                                             </div>
                                         </div>
                                     ))}
